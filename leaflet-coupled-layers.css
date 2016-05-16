@@ -1,0 +1,57 @@
+/* LAYERS CONTROL*/
+.control-coupled-layers {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  background: #FFFFFF;
+  color: #777;
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.50);
+  border-radius: 5px;
+  text-transform: uppercase;
+  line-height: 26px; 
+}
+
+.control-coupled-layers-toggle {
+  text-align: center;
+  padding: 0 1em;
+  display: block;
+  cursor: pointer;
+}
+
+.control-coupled-layers .control-coupled-layers-list {
+  height: 0px;
+  border-top: none; 
+  opacity: 0;
+  overflow: hidden;
+}
+
+.control-coupled-layers-expanded .control-coupled-layers-list {
+  height: auto;
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+}
+
+.control-coupled-layers label {
+  display: block;
+  cursor: pointer;
+  padding: 0 1em;  
+  font-weight: normal !important;
+  margin: 0 !important;
+}
+
+.control-coupled-layers .control-coupled-layers-selector {
+  display: none;
+}
+
+.control-coupled-layers .control-coupled-layers-selector:checked ~ label {
+  color: #222222;
+  background-color: #E0E0E0;
+}
+
+.control-coupled-layers-separator {
+  border-top: 1px solid #777;
+}
+
+.control-coupled-layers-last > .weather-layer-container:last-of-type label {
+  border-radius: 0 0 5px 5px;
+}

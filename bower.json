@@ -1,0 +1,22 @@
+{
+  "name": "leaflet-coupled-layers",
+  "description": "Add a layers control with coupled layers",
+  "main": "coupled-layers.js",
+  "authors": [
+    "Sergey Bobrovskikh"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "leaflet",
+    "layers-control",
+    "coupled-layers"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
