@@ -11,7 +11,7 @@
     "layers-control",
     "coupled-layers"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/owm-inc/leaflet-coupled-layers",
   "ignore": [
     "**/.*",
     "node_modules",

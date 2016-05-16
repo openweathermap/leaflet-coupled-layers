@@ -1,21 +1,20 @@
 (function() {
-  // Define our constructor
+  // Define constructor
   this.CoupledLayers = function(map) {
     var that = this;
 
     that.bindLayers = function (paramName, ifTrueLayer, ifFalseLayer) {
       map.on('baselayerchange', function (obj) {
         if (obj.layer.options[paramName]) {
-          if (!map.hasLayer(ifTrueLayer)) map.addLayer(ifTrueLayer);
-          if (map.hasLayer(ifFalseLayer)) map.removeLayer(ifFalseLayer);
+          if (ifTrueLayer && !map.hasLayer(ifTrueLayer)) map.addLayer(ifTrueLayer);
+          if (ifFalseLayer && map.hasLayer(ifFalseLayer)) map.removeLayer(ifFalseLayer);
         } else if (!obj.layer.options[paramName]) {
-          if (map.hasLayer(ifTrueLayer)) map.removeLayer(ifTrueLayer);
-          if (!map.hasLayer(ifFalseLayer)) map.addLayer(ifFalseLayer);
+          if (ifTrueLayer && map.hasLayer(ifTrueLayer)) map.removeLayer(ifTrueLayer);
+          if (ifFalseLayer && !map.hasLayer(ifFalseLayer)) map.addLayer(ifFalseLayer);
         } 
       });
     };   
   };
-
 
   this.CoupledLayers.prototype.getCustomLayersControl = function (baseLayers, overlays, options) {
     return new this.CustomLayersControl(baseLayers, overlays, options);
@@ -169,8 +168,7 @@
       this._separator.style.display = overlaysPresent && baseLayersPresent ? '' : 'none';
       
       if (overlaysPresent) this._overlaysList.className += ' control-coupled-layers-last';
-      else this._baseLayersList.className += ' control-coupled-layers-last';
-      // this._separator.className += (overlaysPresent && baseLayersPresent ? '' : ' separator-hidden');
+      else this._baseLayersList.className += ' control-coupled-layers-last';      
     },
 
     _onLayerChange: function (e) {
@@ -217,19 +215,13 @@
 
       label.htmlFor = obj.name;
 
-      if (obj.overlay) {
-        // input = this._createRadioElement('weather-base-layers', obj.name, checked);
+      if (obj.overlay) {        
         input = document.createElement('input');
         input.type = 'checkbox';
         input.id = obj.name;
         input.className = 'control-coupled-layers-selector';
         input.defaultChecked = checked;          
       } else {
-        // input = document.createElement('input');
-        // input.type = 'checkbox';
-        // input.id = obj.name;
-        // input.className = 'control-coupled-layers-selector';
-        // input.defaultChecked = checked;  
         input = this._createRadioElement('weather-overlay-layers', obj.name, checked);    
       }
 
