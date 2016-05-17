@@ -23,14 +23,14 @@ You can use it as default layers control.
 
 ```javascript
 // init map as you do it default
-var map = L.map('map', {minZoom: 1,maxZoom: 10})
+var map = L.map('map', {minZoom: 1,maxZoom: 10}).setView([51.520371, 42.916844], 3);
 
 // pass the map object to CoupledLayers constructor
 var cl = new CoupledLayers(map);
 
 // define your layers
 var owm = new L.tileLayer('http://{s}.maps.owm.io:8088/BASE_MAP/{z}/{x}/{y}');
-var osm = new L.tileLayer('http://{s}.somedomain.com/blabla/{z}/{x}/{y}.png').addTo(map);
+var osm = new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 
 // set overlays and base-layers
 var overlays = {
@@ -70,14 +70,14 @@ var positronLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_la
 Finaly you need to bind your sub-layer with param YourParamName.
 
 ```javascript
-  cl.bindLayers('YourParamName', positronLabels);
+cl.bindLayers('YourParamName', positronLabels);
 ```
 Now after you choose a base-layer with notFalse param 'YourParamName', layer 'positronLabels' will be added automatically.
 
 Result exemple:
 
 ```javascript
-var map = L.map('map', {minZoom: 1,maxZoom: 10})
+var map = L.map('map', {minZoom: 1,maxZoom: 10}).setView([51.520371, 42.916844], 3);
 
 var cl = new CoupledLayers(map);
 
@@ -92,7 +92,7 @@ var positronLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_la
   zIndex: 20
 });
 
-var osm = new L.tileLayer('http://{s}.somedomain.com/blabla/{z}/{x}/{y}.png').addTo(map);
+var osm = new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 
 var overlays = {
 };
